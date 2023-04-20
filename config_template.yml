@@ -1,0 +1,4 @@
+catechism_file: catechisms/westminster_shorter_catechism.yml
+catechism_questions: 107
+gotify_app_token: 
+gotify_base_url: https://
