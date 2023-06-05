@@ -7,8 +7,6 @@ with open("config.yml", "r", encoding="utf-8") as config:
     config = yaml.safe_load(config)
 
 # Variables:
-gotify_app_token = config["gotify_app_token"]
-gotify_base_url = config["gotify_base_url"]
 catechism_file = config["catechism_file"]
 catechism_questions = config["catechism_questions"]
 
@@ -45,27 +43,27 @@ for question_number, qa_dict in catechism["Questions"].items():
     references = qa_dict["References"]
 
     if next_question == question_number:
-        # Gotify API Configuration:
-        api_url = f"/message?token={gotify_app_token}"
+        # Telegram API Configuration:
+        chat_id = str(config["telegram_bot_chat_id"])
+        telegram_bot_token = config["telegram_bot_token"]
+        telegram_base_url = config["telegram_base_url"]
+        api_url = f"/bot{telegram_bot_token}/sendMessage"
 
         # Setup the notification message:
         api_payload = {
-            "priority": 4,
-            "title": catechism_name,
-            "message": f"""
-### Question {next_question_number} - {question}
+            "chat_id": chat_id,
+            "parse_mode": "HTML",
+            "text": f"""
+<b>Question {next_question_number} - {question}</b>
 
-> {answer}
+{answer}
 
 {references}
 """,
-            "extras": {
-                "client::display": {"contentType": "text/markdown"},
-            },
         }
 
         # Create the API endpoint:
-        api_endpoint = gotify_base_url + api_url
+        api_endpoint = telegram_base_url + api_url
 
         # Post the message to the Gotify API (send the catechism notification):
         response = requests.post(
@@ -86,3 +84,4 @@ with open("tracker.txt", "w", encoding="utf-8") as tracker:
     # Otherwise just write the next question to the tracker file:
     else:
         tracker.write(next_question)
+
