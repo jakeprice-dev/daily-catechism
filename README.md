@@ -37,8 +37,9 @@ The script doesn't rely on dates, it cycles through each question and loops back
 ```yaml
 catechism_file: catechisms/westminster_shorter_catechism.yml
 catechism_questions: 107
-gotify_app_token: 
-gotify_base_url: https://
+telegram_base_url: https://api.telegram.org
+telegram_bot_chat_id: 
+telegram_bot_token: 
 ```
 
 ## Usage
