@@ -28,7 +28,7 @@ Questions:
 
 ## Tracker File
 
-The script doesn't rely on dates, it cycles through each question and loops back to the first question when the last question is reached (based on the `catechism_questions` variable in `config.yml`). It keeps track of the most recent question in the `tracker.txt` file.
+The script doesn't rely on dates, it cycles through each question and loops back to the first question when the last question is reached (based on the `catechism_questions` variable in `config.yml`). It keeps track of the most recent question in the `tracker.txt` file. Just rename `tracker_example.txt` to `tracker.txt`.
 
 ## Configuration
 
