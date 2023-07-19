@@ -53,6 +53,7 @@ for question_number, qa_dict in catechism["Questions"].items():
         api_payload = {
             "chat_id": chat_id,
             "parse_mode": "HTML",
+            "disable_web_page_preview": True,
             "text": f"""
 <b>Question {next_question_number} - {question}</b>
 
